@@ -23,7 +23,7 @@ async def invite(ctx):
     embed = discord.Embed(
         colour=ctx.author.top_role.colour,
         title="**Invite Link**",
-        description="[Click here](https://discord.com/oauth2/authorize?client_id=793432330915282984&permissions=523328&scope=bot) to add me in your server.\n\n[Join](https://discord.gg/3x8zmuB68X) our support server to get updated and support."
+        description="[Click here](https://discord.com/oauth2/authorize?client_id=793432330915282984&permissions=379968&scope=bot) to add me in your server.\n\n[Join](https://discord.gg/3x8zmuB68X) our support server to get updated and support."
     )
 
     embed.set_footer(text="Timer Support")
