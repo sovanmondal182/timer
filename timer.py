@@ -28,7 +28,7 @@ def is_claim(message: discord.Message) -> Union[bool, None]:
 async def counter(embed: discord.Embed, out: discord.Message, timestamp: float) -> None:
     while timestamp - time.time() > 1:
         diff: float = timestamp - time.time()
-        embed.description: str = "** <:timer:793427999608274944> | Card Despawns in %ds **" % diff
+        embed.description: str = "** Card Despawns in %ds **" % diff
         try:
             await out.edit(embed=embed)
             await asyncio.sleep(WAIT_DIFF)
@@ -44,7 +44,7 @@ async def on_message(message: discord.Message) -> None:
     timestamp: float = time.time() + TIMEOUT
     diff: float = timestamp - time.time()
     embed: discord.Embed = discord.Embed(color=0x0037c3)
-    embed.description: str = "** <:timer:793427999608274944> | Card Despawns in %ds **" % diff
+    embed.description: str = "** Card Despawns in %ds **" % diff
     out: discord.Message = await message.channel.send(embed=embed)
     wait_task: asyncio.Task = bot.loop.create_task(bot.wait_for('message', timeout=30, check=is_claim))
     count_task: asyncio.Task = bot.loop.create_task(counter(embed, out, timestamp))
