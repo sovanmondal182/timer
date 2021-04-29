@@ -57,15 +57,14 @@ async def helpcd(ctx):
 @bot.command(aliases= ["PING"])
 async def ping(ctx):
     if round(bot.latency * 1000) <= 50:
-        embed=discord.Embed(title="Ping", description=f"<a:server_ping:793848943423389696>  **Ping : `{round(bot.latency *1000)} ms`**", color=0x44ff44)
+        embed=discord.Embed(description=f"**Ping : `{round(bot.latency *1000)} ms`**", color=0x44ff44)
     elif round(bot.latency * 1000) <= 100:
-        embed=discord.Embed(title="Ping", description=f"<a:server_ping:793848943423389696>  **Ping : `{round(bot.latency *1000)} ms`**", color=0xffd000)
+        embed=discord.Embed(description=f"**Ping : `{round(bot.latency *1000)} ms`**", color=0xffd000)
     elif round(bot.latency * 1000) <= 200:
-        embed=discord.Embed(title="Ping", description=f"<a:server_ping:793848943423389696>  **Ping : `{round(bot.latency *1000)} ms`**", color=0xff6600)
+        embed=discord.Embed(description=f"**Ping : `{round(bot.latency *1000)} ms`**", color=0xff6600)
     else:
-        embed=discord.Embed(title="Ping", description=f"<a:server_ping:793848943423389696>  **Ping : `{round(bot.latency *1000)} ms`**", color=0x990000)
+        embed=discord.Embed(description=f"**Ping : `{round(bot.latency *1000)} ms`**", color=0x990000)
     await ctx.send(embed=embed, delete_after=10)
-
 @bot.command(aliases= ["ABOUT"])
 async def about(ctx):
 
@@ -82,7 +81,7 @@ async def about(ctx):
 async def cd(ctx):
     embed = discord.Embed(
         colour=discord.Colour.green(),
-        description=f"<a:ng_right:817278966955507744> Alright {ctx.author.mention}, I will remind you when your `T1 Cooldown` will over."
+        description=f"Alright {ctx.author.mention}, I will remind you when your `T1 Cooldown` will over."
     )
     await ctx.send(embed=embed)
     seconds=110
@@ -95,7 +94,7 @@ async def cd(ctx):
 async def cd2(ctx):
     embed = discord.Embed(
         colour=discord.Colour.green(),
-        description=f"<a:ng_right:817278966955507744> Alright {ctx.author.mention}, I will remind you when your `T2 Cooldown` will over."
+        description=f"Alright {ctx.author.mention}, I will remind you when your `T2 Cooldown` will over."
     )
     await ctx.send(embed=embed)
     seconds=590
@@ -108,7 +107,7 @@ async def cd2(ctx):
 async def cd3(ctx):
     embed = discord.Embed(
         colour=discord.Colour.green(),
-        description=f"<a:ng_right:817278966955507744> Alright {ctx.author.mention}, I will remind you when your `T3 Cooldown` will over."
+        description=f"Alright {ctx.author.mention}, I will remind you when your `T3 Cooldown` will over."
     )
     await ctx.send(embed=embed)
     seconds=1790
@@ -121,7 +120,7 @@ async def cd3(ctx):
 async def cd4(ctx):
     embed = discord.Embed(
         colour=discord.Colour.green(),
-        description=f"<a:ng_right:817278966955507744> Alright {ctx.author.mention}, I will remind you when your `T4 Cooldown` will over."
+        description=f"Alright {ctx.author.mention}, I will remind you when your `T4 Cooldown` will over."
     )
     await ctx.send(embed=embed)
     seconds=7190
@@ -134,7 +133,7 @@ async def cd4(ctx):
 async def cd5(ctx):
     embed = discord.Embed(
         colour=discord.Colour.green(),
-        description=f"<a:ng_right:817278966955507744> Alright {ctx.author.mention}, I will remind you when your `T5 Cooldown` will over."
+        description=f"Alright {ctx.author.mention}, I will remind you when your `T5 Cooldown` will over."
     )
     await ctx.send(embed=embed)
     seconds=21590
@@ -147,7 +146,7 @@ async def cd5(ctx):
 async def cd6(ctx):
     embed = discord.Embed(
         colour=discord.Colour.green(),
-        description=f"<a:ng_right:817278966955507744> Alright {ctx.author.mention}, I will remind you when your `T6 Cooldown` will over."
+        description=f"Alright {ctx.author.mention}, I will remind you when your `T6 Cooldown` will over."
     )
     await ctx.send(embed=embed)
     seconds=86390
@@ -188,7 +187,7 @@ async def trade_error(ctx, error):
     if isinstance (error, commands.MissingRequiredArgument):
         embed= discord.Embed(
             colour=discord.Colour.red(),
-            description=("<a:ng_Warning:817305651734773760> Please mention an user.")
+            description=("Please mention an user.")
         )
         await ctx.send(embed=embed)
 
@@ -333,7 +332,7 @@ async def premium_error(ctx, error):
     if isinstance (error, commands.MissingRequiredArgument):
         embed= discord.Embed(
             colour=discord.Colour.red(),
-            description=("<a:ng_Warning:817305651734773760> Please mention an user.")
+            description=("Please mention an user.")
         )
         await ctx.send(embed=embed)
 
@@ -394,7 +393,7 @@ async def calculate(ctx, operation, *nums):
     if operation not in ['+', '-', '*', '/']:
         embed= discord.Embed(
             colour=discord.Colour.red(),
-            description=("<a:ng_Warning:817305651734773760> Please type a valid operation. `Ex: + 25 9`")
+            description=("Please type a valid operation. `Ex: + 25 9`")
         )
         await ctx.send(embed=embed)
     var = f' {operation} '.join(nums)
