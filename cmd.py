@@ -48,7 +48,7 @@ async def helpcd(ctx):
     embed = discord.Embed(
         colour=ctx.author.top_role.colour,
         title="**Cooldown Commands**",
-        description="`t!cd` - To set T1 cooldown reminder.\n`t!cd2` - To set T2 cooldown reminder.\n`t!cd3` - To set T3 cooldown reminder.\n`t!cd4` - To set T4 cooldown reminder.\n`t!cd5` - To set T5 cooldown reminder.\n`t!cd6` - To set T6 cooldown reminder."
+        description="`t!cd` - To set T1 cooldown reminder.\n`t!cd2` - To set T2 cooldown reminder.\n`t!cd3` - To set T3 cooldown reminder.\n`t!cd4` - To set T4 cooldown reminder.\n`t!cd5` - To set T5 cooldown reminder.\n`t!cd6` - To set T6 cooldown reminder.\n`t!cdbump` - To set 1hr reminder of Bump.\n`t!cdvote` - To set 12hrs reminder of vote."
     )
     embed.set_footer(text="Timer Support")
 
@@ -152,6 +152,32 @@ async def cd6(ctx):
     seconds=86390
     await asyncio.sleep(seconds)
     await ctx.send(f"Hi {ctx.author.mention}, your `T6 Cooldown` has over.")
+    return
+    await ctx.send(embed=embed)
+
+@bot.command(aliases=["br", "brem", "rb", "rembump", "cdb", "cdbump"])
+async def bumprem(ctx):
+    embed = discord.Embed(
+        colour=discord.Colour.green(),
+        description=f"Alright {ctx.author.mention}, I will remind you after 1 hour."
+    )
+    await ctx.send(embed=embed)
+    seconds=43200
+    await asyncio.sleep(seconds)
+    await ctx.send(f"Hi {ctx.author.mention}, you can `Bump` now.")
+    return
+    await ctx.send(embed=embed)
+
+@bot.command(aliases=["vr", "vrem", "rv", "remvote", "cdv", "cdvote"])
+async def voterem(ctx):
+    embed = discord.Embed(
+        colour=discord.Colour.green(),
+        description=f"Alright {ctx.author.mention}, I will remind you after 12 hours."
+    )
+    await ctx.send(embed=embed)
+    seconds=3600
+    await asyncio.sleep(seconds)
+    await ctx.send(f"Hi {ctx.author.mention}, you can `Vote` now.")
     return
     await ctx.send(embed=embed)
 
