@@ -162,7 +162,7 @@ async def bumprem(ctx):
         description=f"Alright {ctx.author.mention}, I will remind you after 1 hour."
     )
     await ctx.send(embed=embed)
-    seconds=43200
+    seconds=3600
     await asyncio.sleep(seconds)
     await ctx.send(f"Hi {ctx.author.mention}, you can `Bump` now.")
     return
@@ -175,7 +175,7 @@ async def voterem(ctx):
         description=f"Alright {ctx.author.mention}, I will remind you after 12 hours."
     )
     await ctx.send(embed=embed)
-    seconds=3600
+    seconds=43200
     await asyncio.sleep(seconds)
     await ctx.send(f"Hi {ctx.author.mention}, you can `Vote` now.")
     return
