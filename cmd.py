@@ -3,6 +3,7 @@ import asyncio
 from discord.ext import commands
 from discord import message
 from discord.utils import get
+import random
 #import timer
 
 TOKEN = "NzkzNDMyMzMwOTE1MjgyOTg0.X-sLcA.Bw7yWlNiXsORCcRixjApNCMIfek"
