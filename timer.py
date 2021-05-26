@@ -64,11 +64,12 @@ async def on_message(message: discord.Message) -> None:
             {wait_task, count_task},
             return_when=asyncio.FIRST_COMPLETED
         )
-    embed1= discord.Embed(
-    colour=discord.Colour.green(),
-    description=(f":white_check_mark: - **Card Claimed!**")
-    )
-    await out.edit(embed=embed1, delete_after=5)
+    # embed1= discord.Embed(
+    # colour=discord.Colour.green(),
+    # description=(f":white_check_mark: - **Card Claimed!**")
+    # )
+    # await out.edit(embed=embed1, delete_after=5)
+    await out.delete()
     for task in pending:
         task.cancel()
         with suppress(asyncio.CancelledError):
