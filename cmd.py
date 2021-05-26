@@ -36,7 +36,7 @@ async def help(ctx):
     embed = discord.Embed(
         colour=ctx.author.top_role.colour,
         title="**Help**",
-        description="`t!invite` - Add me to your server.\n`t!about` - About me.\n`t!ping` - To show the Bot's latency.\n`t!helpcd` - To see reminder commands of cards cooldown.\n`t!gift <user>` - To gift cards to someone.\n`t!trade <user>` - To send trades to someone.\n`t!profile` - To see your anime soul profile.\n`t!bump` - Link to directly bump on Animesoul site.\n`t!vote` - Vote shoob.\n`t!fuse` - Link to fuse your cards.\n`t!market` - Go directly to the market.\n`t!mg` - Go to minigames.\n`t!auction` - Go to auction site.\n`t!server` - Check out your server directly by going through this link.\n`t!noti` - To see AS Notifications.\n`t!achivement` - check your achivements on as site.\n`t!cal` - Calculator.\n`t!msg` - Check out dms on animesoul site.\n`t!premium <user>` - Gift the user anime soul premium.\n`t!db` - directly go to AS dashboard.\n`t!assupport` - go to the link of  animeosoul  support.\n`t!inv` - check your inventory.\n`t!bank` - directly go to bank.\n`t!av` - To see Avatar."
+        description="`t!invite` - Add me to your server.\n`t!about` - About me.\n`t!ping` - To show the Bot's latency.\n`t!helpcd` - To see reminder commands of cards cooldown.\n`t!gift <user>` - To gift cards to someone.\n`t!trade <user>` - To send trades to someone.\n`t!profile` - To see your anime soul profile.\n`t!bump` - Link to directly bump on Animesoul site.\n`t!vote` - Vote shoob.\n`t!fuse` - Link to fuse your cards.\n`t!market` - Go directly to the market.\n`t!mg` - Go to minigames.\n`t!auction` - Go to auction site.\n`t!server` - Check out your server directly by going through this link.\n`t!noti` - To see AS Notifications.\n`t!achivement` - check your achivements on as site.\n`t!cal` - Calculator.\n`t!msg` - Check out dms on animesoul site.\n`t!premium <user>` - Gift the user anime soul premium.\n`t!db` - directly go to AS dashboard.\n`t!assupport` - go to the link of  animeosoul  support.\n`t!inv` - check your inventory.\n`t!bank` - directly go to bank.\n`t!av` - To see Avatar.\n`t!timer` - To set countdown.\n`t!reminder` - To set reminder.\n`t!weather` - To see weather details.\n`t!reverse` - To reverse a sentence."
     )
     embed.set_footer(text="Timer Support")
 
@@ -424,6 +424,183 @@ async def calculate(ctx, operation, *nums):
         await ctx.send(embed=embed)
     var = f' {operation} '.join(nums)
     await ctx.send(f'> `Result = {eval(var)}`')
+
+@bot.command()
+async def weather(ctx, message):
+	embed = discord.Embed(colour = random.randint(0, 0xFFFFFF),
+	                      timestamp=ctx.message.created_at,
+	                      title=f"Weather in {message}")
+	embed.set_image(
+	    url=
+	    f"https://api.cool-img-api.ml/weather-card?location={message}&background=https://cdn.discordapp.com/attachments/819395525820416000/847131557440782417/black-blur.png"
+	)
+	await ctx.send(embed=embed)
+
+@weather.error
+async def weather_error(ctx, error):
+    if isinstance (error, commands.MissingRequiredArgument):
+        embed= discord.Embed(
+        colour=discord.Colour.red(),
+        description=(f"```weather <location name>```\nInvalid arguments provided: Not enough arguments passed.")
+        )
+        await ctx.send(embed=embed)
+
+@bot.command(aliases=["rm", "remindme", "remind"])
+async def reminder(ctx,seconds, * ,messages):
+    try:
+        try:
+            time = int(seconds)
+        except:
+            convertTimeList = {'s':1, 'm':60, 'h':3600, 'd':86400, 'S':1, 'M':60, 'H':3600, 'D':86400}
+            time = int(seconds[:-1]) * convertTimeList[seconds[-1]]
+        if time > 21600:
+            embed= discord.Embed(
+            colour=discord.Colour.red(),
+            description=("I can\'t set reminders over 6 hrs long.")
+            )
+            await ctx.send(embed=embed)
+            return
+        if time <= 0:
+            embed= discord.Embed(
+            colour=discord.Colour.red(),
+            description=("Reminders don\'t go into negatives.")
+            )
+            await ctx.send(embed=embed)
+            return
+        if time >= 3600:
+            embed= discord.Embed(
+            colour=discord.Colour.red(),
+            description=(f"Set a reminder in {time//3600} hours {time%3600//60} minutes {time%60} seconds from now.")
+            )
+            await ctx.send(embed=embed)
+        elif time >= 60:
+            embed= discord.Embed(
+            colour=discord.Colour.red(),
+            description=(f"Set a reminder in {time//60} minutes {time%60} seconds from now.")
+            )
+            await ctx.send(embed=embed)
+        elif time < 60:
+            embed= discord.Embed(
+            colour=discord.Colour.red(),
+            description=(f"Set a reminder in {time} seconds from now.")
+            )
+            await ctx.send(embed=embed)
+        while True:
+            time -= 1
+            if time == 0:
+                break
+            await asyncio.sleep(1)
+        await ctx.send(f"**Reminder** {ctx.author.mention}: {messages}")
+    except:
+        embed= discord.Embed(
+        colour=discord.Colour.red(),
+        description=(f"```reminder <Time:Duration> <Message:Text>```\nInvalid arguments provided: Not enough arguments passed.")
+        )
+        await ctx.send(embed=embed)
+
+@reminder.error
+async def reminder_error(ctx, error):
+    if isinstance (error, commands.MissingRequiredArgument):
+        embed= discord.Embed(
+        colour=discord.Colour.red(),
+        description=(f"```reminder <Time:Duration> <Message:Text>```\nInvalid arguments provided: Not enough arguments passed.")
+        )
+        await ctx.send(embed=embed)
+
+@bot.command()
+async def timer(ctx, *, timeInput):
+    try:
+        try:
+            time = int(timeInput)
+        except:
+            convertTimeList = {'s':1, 'm':60, 'h':3600, 'd':86400, 'S':1, 'M':60, 'H':3600, 'D':86400}
+            time = int(timeInput[:-1]) * convertTimeList[timeInput[-1]]
+        if time > 21600:
+            embed= discord.Embed(
+            colour=discord.Colour.red(),
+            description=(f"I can\'t do timers over 6 hrs long.")
+            )
+            await ctx.send(embed=embed)
+            return
+        if time <= 0:
+            embed= discord.Embed(
+            colour=discord.Colour.red(),
+            description=(f"Timers don\'t go into negatives.")
+            )
+            await ctx.send(embed=embed)
+            return
+        if time >= 3600:
+            embed= discord.Embed(
+            colour=discord.Colour.red(),
+            description=(f"Timer: {time//3600} hours {time%3600//60} minutes {time%60} seconds")
+            )
+            msg = await ctx.send(embed=embed)
+        elif time >= 60:
+            embed= discord.Embed(
+            colour=discord.Colour.red(),
+            description=(f"Timer: {time//60} minutes {time%60} seconds")
+            )
+            msg = await ctx.send(embed=embed)
+        elif time < 60:
+            embed= discord.Embed(
+            colour=discord.Colour.red(),
+            description=(f"Timer: {time} seconds")
+            )
+            msg = await ctx.send(embed=embed)
+        while True:
+            try:
+                await asyncio.sleep(1)
+                time -= 1
+                if time >= 3600:
+                    embed1= discord.Embed(
+                    colour=discord.Colour.red(),
+                    description=(f"Timer: {time//3600} hours {time %3600//60} minutes {time%60} seconds")
+                    )
+                    await msg.edit(embed=embed1)
+                elif time >= 60:
+                    embed1= discord.Embed(
+                    colour=discord.Colour.red(),
+                    description=(f"Timer: {time//60} minutes {time%60} seconds")
+                    )
+                    await msg.edit(embed=embed1)
+                elif time < 60:
+                    embed1= discord.Embed(
+                    colour=discord.Colour.red(),
+                    description=(f"Timer: {time} seconds")
+                    )
+                    await msg.edit(embed=embed1)
+                if time <= 0:
+                    embed1= discord.Embed(
+                    colour=discord.Colour.red(),
+                    description=(f"Ended!")
+                    )
+                    await msg.edit(embed=embed1)
+                    break
+            except:
+                break
+    except:
+        embed= discord.Embed(
+        colour=discord.Colour.red(),
+        description=(f"Alright, first you gotta let me know how I\'m gonna time **{timeInput}**....")
+        )
+        await ctx.send(embed=embed)
+
+@timer.error
+async def timer_error(ctx, error):
+    if isinstance (error, commands.MissingRequiredArgument):
+        embed= discord.Embed(
+        colour=discord.Colour.red(),
+        description=(f"```timer <Time:Duration>```\nInvalid arguments provided: Not enough arguments passed.")
+        )
+        await ctx.send(embed=embed)
+
+@bot.command(aliases=["reverse"])
+async def rev(ctx, *, var):
+	stuff = var[::-1]
+	embed = discord.Embed(description = stuff, colour = random.randint(0, 0xFFFFFF))
+	embed.set_author(name = ctx.author, icon_url = ctx.author.avatar_url)
+	await ctx.message.delete()
+	await ctx.send(embed = embed)
 
 
 bot.run(TOKEN)

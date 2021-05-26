@@ -28,6 +28,12 @@ def is_claim(message: discord.Message) -> Union[bool, None]:
 async def counter(embed: discord.Embed, out: discord.Message, timestamp: float) -> None:
     while timestamp - time.time() > 1:
         diff: float = timestamp - time.time()
+        if diff >= 10:
+            embed: discord.Embed = discord.Embed(color=0x00cc00)
+        elif diff >= 5:
+            embed: discord.Embed = discord.Embed(color=0xffff00)
+        elif diff >= 0:
+            embed: discord.Embed = discord.Embed(color=0xff3300)
         embed.description: str = "** Card Despawns in %ds **" % diff
         try:
             await out.edit(embed=embed)
@@ -43,6 +49,12 @@ async def on_message(message: discord.Message) -> None:
         return
     timestamp: float = time.time() + TIMEOUT
     diff: float = timestamp - time.time()
+    if diff >= 10:
+            embed: discord.Embed = discord.Embed(color=0x00cc00)
+    elif diff >= 5:
+        embed: discord.Embed = discord.Embed(color=0xffff00)
+    elif diff >= 0:
+        embed: discord.Embed = discord.Embed(color=0xff3300)
     embed: discord.Embed = discord.Embed(color=0x0037c3)
     embed.description: str = "** Card Despawns in %ds **" % diff
     out: discord.Message = await message.channel.send(embed=embed)
@@ -52,7 +64,11 @@ async def on_message(message: discord.Message) -> None:
             {wait_task, count_task},
             return_when=asyncio.FIRST_COMPLETED
         )
-    await out.delete()
+    embed1= discord.Embed(
+    colour=discord.Colour.green(),
+    description=(f":white_check_mark: - **Card Claimed!**")
+    )
+    await out.edit(embed=embed1, delete_after=5)
     for task in pending:
         task.cancel()
         with suppress(asyncio.CancelledError):
