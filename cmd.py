@@ -5,6 +5,11 @@ from discord import message
 from discord.utils import get
 import random
 #import timer
+from datetime import datetime
+import os
+import time
+import json
+from discord.ext.commands import CommandNotFound
 
 TOKEN = "NzkzNDMyMzMwOTE1MjgyOTg0.X-sLcA.Bw7yWlNiXsORCcRixjApNCMIfek"
 BOT_PREFIX = "t!", "T!", ","
@@ -37,7 +42,7 @@ async def help(ctx):
     embed = discord.Embed(
         colour=ctx.author.top_role.colour,
         title="**Help**",
-        description="`t!invite` - Add me to your server.\n`t!about` - About me.\n`t!ping` - To show the Bot's latency.\n`t!helpcd` - To see reminder commands of cards cooldown.\n`t!gift <user>` - To gift cards to someone.\n`t!trade <user>` - To send trades to someone.\n`t!profile` - To see your anime soul profile.\n`t!bump` - Link to directly bump on Animesoul site.\n`t!vote` - Vote shoob.\n`t!fuse` - Link to fuse your cards.\n`t!market` - Go directly to the market.\n`t!mg` - Go to minigames.\n`t!auction` - Go to auction site.\n`t!server` - Check out your server directly by going through this link.\n`t!noti` - To see AS Notifications.\n`t!achivement` - check your achivements on as site.\n`t!cal` - Calculator.\n`t!msg` - Check out dms on animesoul site.\n`t!premium <user>` - Gift the user anime soul premium.\n`t!db` - directly go to AS dashboard.\n`t!assupport` - go to the link of  animeosoul  support.\n`t!inv` - check your inventory.\n`t!bank` - directly go to bank.\n`t!av` - To see Avatar.\n`t!timer` - To set countdown.\n`t!reminder` - To set reminder.\n`t!weather` - To see weather details.\n`t!reverse` - To reverse a sentence."
+        description="`t!invite` - Add me to your server.\n`t!about` - About me.\n`t!ping` - To show the Bot's latency.\n`t!helpcd` - To see reminder commands of cards cooldown.\n`t!gift <user>` - To gift cards to someone.\n`t!trade <user>` - To send trades to someone.\n`t!profile` - To see your anime soul profile.\n`t!bump` - Link to directly bump on Animesoul site.\n`t!vote` - Vote shoob.\n`t!fuse` - Link to fuse your cards.\n`t!market` - Go directly to the market.\n`t!mg` - Go to minigames.\n`t!auction` - Go to auction site.\n`t!server` - Check out your server directly by going through this link.\n`t!noti` - To see AS Notifications.\n`t!achivement` - check your achivements on as site.\n`t!cal` - Calculator.\n`t!msg` - Check out dms on animesoul site.\n`t!premium <user>` - Gift the user anime soul premium.\n`t!db` - directly go to AS dashboard.\n`t!assupport` - go to the link of  animeosoul  support.\n`t!inv` - check your inventory.\n`t!bank` - directly go to bank.\n`t!av` - To see Avatar.\n`t!timer` - To set countdown.\n`t!reminder` - To set reminder.\n`t!weather` - To see weather details.\n`t!reverse` - To reverse a sentence.\n`t!snipe` - To see the previous deleted massege."
     )
     embed.set_footer(text="Timer Support")
 
@@ -415,6 +420,12 @@ async def on_message(ctx):
 
     await bot.process_commands(ctx)
    
+@bot.event
+async def on_command_error(ctx, error):
+    if isinstance(error, CommandNotFound):
+        return
+    raise error
+
 @bot.command(aliases=["cal","CAL"])
 async def calculate(ctx, operation, *nums):
     if operation not in ['+', '-', '*', '/']:
@@ -603,5 +614,35 @@ async def rev(ctx, *, var):
 	await ctx.message.delete()
 	await ctx.send(embed = embed)
 
+snipe_message_content = None
+snipe_message_author = None
+snipe_message_id = None
+
+@bot.event
+async def on_message_delete(message):
+
+    global snipe_message_content
+    global snipe_message_author
+    global snipe_message_id
+
+    snipe_message_content = message.content
+    snipe_message_author = message.author.id
+    snipe_message_id = message.id
+    await asyncio.sleep(60)
+
+    if message.id == snipe_message_id:
+        snipe_message_author = None
+        snipe_message_content = None
+        snipe_message_id = None
+
+@bot.command()
+async def snipe(message):
+    if snipe_message_content==None:
+        await message.channel.send("Theres nothing to snipe.")
+    else:
+        embed = discord.Embed(description=f"{snipe_message_content}")
+        embed.set_author(name= f"{message.author.name}#{message.author.discriminator}", icon_url=message.author.avatar_url)
+        await message.channel.send(embed=embed)
+        return
 
 bot.run(TOKEN)
