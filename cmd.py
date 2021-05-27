@@ -638,7 +638,7 @@ async def on_message_delete(message):
 @bot.command()
 async def snipe(message):
     if snipe_message_content==None:
-        await message.channel.send("Theres nothing to snipe.")
+        await message.channel.send("There is nothing to snipe.")
     else:
         embed = discord.Embed(description=f"{snipe_message_content}")
         embed.set_author(name= f"{message.author.name}#{message.author.discriminator}", icon_url=message.author.avatar_url)
