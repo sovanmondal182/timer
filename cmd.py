@@ -4,10 +4,8 @@ from discord.ext import commands
 from discord import message
 from discord.utils import get
 import random
-#import timer
 from datetime import datetime
 import os
-import time
 import json
 from discord.ext.commands import CommandNotFound
 
