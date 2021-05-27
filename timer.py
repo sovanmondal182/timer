@@ -55,7 +55,6 @@ async def on_message(message: discord.Message) -> None:
         embed: discord.Embed = discord.Embed(color=0xffff00)
     elif diff >= 0:
         embed: discord.Embed = discord.Embed(color=0xff3300)
-    embed: discord.Embed = discord.Embed(color=0x0037c3)
     embed.description: str = "** Card Despawns in %ds **" % diff
     out: discord.Message = await message.channel.send(embed=embed)
     wait_task: asyncio.Task = bot.loop.create_task(bot.wait_for('message', timeout=30, check=is_claim))
