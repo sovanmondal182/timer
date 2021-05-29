@@ -25,7 +25,7 @@ async def on_ready():
 async def invite(ctx):
 
     embed = discord.Embed(
-        colour=ctx.author.top_role.colour,
+        colour=random.randint(0, 0xFFFFFF),
         title="**Invite Link**",
         description="[Click here](https://discord.com/oauth2/authorize?client_id=793432330915282984&permissions=379968&scope=bot) to add me in your server.\n\n[Join](https://discord.gg/3x8zmuB68X) our support server to get updated and support."
     )
@@ -38,7 +38,7 @@ async def invite(ctx):
 async def help(ctx):
 
     embed = discord.Embed(
-        colour=ctx.author.top_role.colour,
+        colour=random.randint(0, 0xFFFFFF),
         title="**Help**",
         description="`t!invite` - Add me to your server.\n`t!about` - About me.\n`t!ping` - To show the Bot's latency.\n`t!helpcd` - To see reminder commands of cards cooldown.\n`t!gift <user>` - To gift cards to someone.\n`t!trade <user>` - To send trades to someone.\n`t!profile` - To see your anime soul profile.\n`t!bump` - Link to directly bump on Animesoul site.\n`t!vote` - Vote shoob.\n`t!fuse` - Link to fuse your cards.\n`t!market` - Go directly to the market.\n`t!mg` - Go to minigames.\n`t!auction` - Go to auction site.\n`t!server` - Check out your server directly by going through this link.\n`t!noti` - To see AS Notifications.\n`t!achivement` - check your achivements on as site.\n`t!cal` - Calculator.\n`t!msg` - Check out dms on animesoul site.\n`t!premium <user>` - Gift the user anime soul premium.\n`t!db` - directly go to AS dashboard.\n`t!assupport` - go to the link of  animeosoul  support.\n`t!inv` - check your inventory.\n`t!bank` - directly go to bank.\n`t!av` - To see Avatar.\n`t!timer` - To set countdown.\n`t!reminder` - To set reminder.\n`t!weather` - To see weather details.\n`t!reverse` - To reverse a sentence.\n`t!snipe` - To see the previous deleted massege."
     )
@@ -50,7 +50,7 @@ async def help(ctx):
 async def helpcd(ctx):
 
     embed = discord.Embed(
-        colour=ctx.author.top_role.colour,
+        colour=random.randint(0, 0xFFFFFF),
         title="**Cooldown Commands**",
         description="`t!cd` - To set T1 cooldown reminder.\n`t!cd2` - To set T2 cooldown reminder.\n`t!cd3` - To set T3 cooldown reminder.\n`t!cd4` - To set T4 cooldown reminder.\n`t!cd5` - To set T5 cooldown reminder.\n`t!cd6` - To set T6 cooldown reminder.\n`t!cdbump` - To set 1hr reminder of Bump.\n`t!cdvote` - To set 12hrs reminder of Vote."
     )
@@ -73,7 +73,7 @@ async def ping(ctx):
 async def about(ctx):
 
     embed = discord.Embed(
-        colour=ctx.author.top_role.colour,
+        colour=random.randint(0, 0xFFFFFF),
         title="**About**",
         description="This is a Timer Bot. That helps you to claim Shoob cards up to time. So, don't miss any card and enjoy claiming."
     )
@@ -197,7 +197,7 @@ async def gift_cmd(ctx, member : discord.Member):
 async def gift_error(ctx, error):
     if isinstance (error, commands.MissingRequiredArgument):
         embed = discord.Embed(
-            color = ctx.author.top_role.colour,
+            color = random.randint(0, 0xFFFFFF),
             description=f"[Click Here](https://animesoul.com/gift/{ctx.author.id}) to gift cards to <@{ctx.author.id}>."
         )
     await ctx.send(embed=embed)
@@ -235,7 +235,7 @@ async def av_cmd(ctx, member: discord.Member):
 async def av_error(ctx, error):
     if isinstance (error, commands.MissingRequiredArgument):
         embed = discord.Embed(
-            color = ctx.author.top_role.colour,
+            color = random.randint(0, 0xFFFFFF),
             title=f"{ctx.author}",
             description=f"[Download]({ctx.author.avatar_url})"
         )
@@ -245,7 +245,7 @@ async def av_error(ctx, error):
 @bot.command(name='serverinfo', aliases=['ServerInfo', 'sinfo', 'si', 'SI'])
 async def si_cmd(ctx):
     embed = discord.Embed(
-        color = ctx.author.top_role.colour,
+        color = random.randint(0, 0xFFFFFF),
         title=f"{ctx.guild.name}"
     )
     embed.set_image(url=f"{ctx.guild.icon_url}")
@@ -268,7 +268,7 @@ async def profile_cmd(ctx, member : discord.Member):
 async def profile_error(ctx, error):
     if isinstance (error, commands.MissingRequiredArgument):
         embed = discord.Embed(
-            color = ctx.author.top_role.colour,
+            color = random.randint(0, 0xFFFFFF),
             title="Your Profile",
             description=f"[Click Here](https://animesoul.com/user/{ctx.author.id}) to open <@{ctx.author.id}>'s AnimeSoul Profile."
         )
@@ -278,7 +278,7 @@ async def profile_error(ctx, error):
 @bot.command(aliases=["BUMP"])
 async def bump(ctx):
     embed = discord.Embed(
-        colour=ctx.author.top_role.colour,
+        colour=random.randint(0, 0xFFFFFF),
         description=f"[Click Here](https://animesoul.com/bump) to Bump."
     )
     await ctx.send(embed=embed)
@@ -286,7 +286,7 @@ async def bump(ctx):
 @bot.command(aliases=["VOTE"])
 async def vote(ctx):
     embed = discord.Embed(
-        colour=ctx.author.top_role.colour,
+        colour=random.randint(0, 0xFFFFFF),
         description=f"[Click Here](https://top.gg/bot/673362753489993749/vote) to Vote."
     )
     await ctx.send(embed=embed)
@@ -294,7 +294,7 @@ async def vote(ctx):
 @bot.command(aliases=["fuse", "FUSE", "FUSION"])
 async def fusion(ctx):
     embed = discord.Embed(
-        colour=ctx.author.top_role.colour,
+        colour=random.randint(0, 0xFFFFFF),
         description=f"[Click Here](https://animesoul.com/fusion) to open Fusion HQ."
     )
     await ctx.send(embed=embed)
@@ -302,7 +302,7 @@ async def fusion(ctx):
 @bot.command(aliases=["mr", "MR", "MARKET"])
 async def market(ctx):
     embed = discord.Embed(
-        colour=ctx.author.top_role.colour,
+        colour=random.randint(0, 0xFFFFFF),
         description=f"[Click Here](https://animesoul.com/market) to open Market."
     )
     await ctx.send(embed=embed)
@@ -310,7 +310,7 @@ async def market(ctx):
 @bot.command(aliases=["minigame", "MG"])
 async def mg(ctx):
     embed = discord.Embed(
-        colour=ctx.author.top_role.colour,
+        colour=random.randint(0, 0xFFFFFF),
         description=f"[Click Here](https://animesoul.com/mini-game) to open Mini-Game."
     )
     await ctx.send(embed=embed)
@@ -318,7 +318,7 @@ async def mg(ctx):
 @bot.command(aliases=["auc", "AUC"])
 async def auction(ctx):
     embed = discord.Embed(
-        colour=ctx.author.top_role.colour,
+        colour=random.randint(0, 0xFFFFFF),
         description=f"[Click Here](https://animesoul.com/auction) to open Auction."
     )
     await ctx.send(embed=embed)
@@ -326,7 +326,7 @@ async def auction(ctx):
 @bot.command(aliases=["sl","sli","server", "SL", "SLI"])
 async def server_list(ctx):
     embed = discord.Embed(
-        colour=ctx.author.top_role.colour,
+        colour=random.randint(0, 0xFFFFFF),
         description=f"[Click Here](https://animesoul.com/servers) to open Server List."
     )
     await ctx.send(embed=embed)
@@ -334,7 +334,7 @@ async def server_list(ctx):
 @bot.command(aliases=["achiev","achv", "ACHV", "ACHIEVEMENTS"])
 async def achievements(ctx):
     embed = discord.Embed(
-        colour=ctx.author.top_role.colour,
+        colour=random.randint(0, 0xFFFFFF),
         description=f"[Click Here](https://animesoul.com/achievements) to open Your Achievements."
     )
     await ctx.send(embed=embed)
@@ -342,7 +342,7 @@ async def achievements(ctx):
 @bot.command(aliases=["msg", "MSG"])
 async def messages(ctx):
     embed = discord.Embed(
-        colour=ctx.author.top_role.colour,
+        colour=random.randint(0, 0xFFFFFF),
         description=f"[Click Here](https://animesoul.com/messages) to open Your Website Messages."
     )
     await ctx.send(embed=embed)
@@ -370,7 +370,7 @@ async def premium_error(ctx, error):
 @bot.command(aliases=["dash", "db", "DB", "DASH"])
 async def dashboard(ctx):
     embed = discord.Embed(
-        colour=ctx.author.top_role.colour,
+        colour=random.randint(0, 0xFFFFFF),
         description=f"[Click Here](https://animesoul.com/dashboard) to open Your Website Dashboard."
     )
     await ctx.send(embed=embed)
@@ -378,7 +378,7 @@ async def dashboard(ctx):
 @bot.command(aliases=["sup","assupport", "SUP", "SUPPORT"])
 async def support(ctx):
     embed = discord.Embed(
-        colour=ctx.author.top_role.colour,
+        colour=random.randint(0, 0xFFFFFF),
         description=f"[Click Here](https://animesoul.com/support) to open Website Support Section."
     )
     await ctx.send(embed=embed)
@@ -386,7 +386,7 @@ async def support(ctx):
 @bot.command(aliases=["inv", "INV", "INVENTORY"])
 async def inventory(ctx):
     embed = discord.Embed(
-        colour=ctx.author.top_role.colour,
+        colour=random.randint(0, 0xFFFFFF),
         description=f"[Click Here](https://animesoul.com/inventory) to open your Inventory."
     )
     await ctx.send(embed=embed)
@@ -394,7 +394,7 @@ async def inventory(ctx):
 @bot.command(aliases=["BANK"])
 async def bank(ctx):
     embed = discord.Embed(
-        colour=ctx.author.top_role.colour,
+        colour=random.randint(0, 0xFFFFFF),
         description=f"[Click Here](https://animesoul.com/bank) to open your bank."
     )
     await ctx.send(embed=embed)
@@ -402,7 +402,7 @@ async def bank(ctx):
 @bot.command(aliases=["noti", "NOTI"])
 async def notification(ctx):
     embed = discord.Embed(
-        colour=ctx.author.top_role.colour,
+        colour=random.randint(0, 0xFFFFFF),
         description=f"[Click Here](https://animesoul.com/notifications) to open your AS Notifications."
     )
     await ctx.send(embed=embed)
