@@ -17,7 +17,7 @@ async def on_ready():
 
 @bot.event
 async def on_message(message: discord.Message) -> None:
-    TIMEOUT = 55;
+    TIMEOUT = 60;
     if message.author.id != KARUTA_ID or not 'dropping' in message.content:
         return
     msg = await message.channel.send(f"Card expires in {TIMEOUT}s")
