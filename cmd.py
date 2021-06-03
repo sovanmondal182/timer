@@ -40,23 +40,32 @@ async def help(ctx):
     embed = discord.Embed(
         colour=random.randint(0, 0xFFFFFF),
         title="**Help**",
-        description="`t!invite` - Add me to your server.\n`t!about` - About me.\n`t!ping` - To show the Bot's latency.\n`t!helpcd` - To see reminder commands of cards cooldown.\n`t!gift <user>` - To gift cards to someone.\n`t!trade <user>` - To send trades to someone.\n`t!profile` - To see your anime soul profile.\n`t!bump` - Link to directly bump on Animesoul site.\n`t!vote` - Vote shoob.\n`t!fuse` - Link to fuse your cards.\n`t!market` - Go directly to the market.\n`t!mg` - Go to minigames.\n`t!auction` - Go to auction site.\n`t!server` - Check out your server directly by going through this link.\n`t!noti` - To see AS Notifications.\n`t!achivement` - check your achivements on as site.\n`t!cal` - Calculator.\n`t!msg` - Check out dms on animesoul site.\n`t!premium <user>` - Gift the user anime soul premium.\n`t!db` - directly go to AS dashboard.\n`t!assupport` - go to the link of  animeosoul  support.\n`t!inv` - check your inventory.\n`t!bank` - directly go to bank.\n`t!av` - To see Avatar.\n`t!timer` - To set countdown.\n`t!reminder` - To set reminder.\n`t!weather` - To see weather details.\n`t!reverse` - To reverse a sentence.\n`t!snipe` - To see the previous deleted massege."
+        description="`t!invite` - Add me to your server.\n`t!about` - About me.\n`t!ping` - To show the Bot's latency.\n`t!help-cd` - To see reminder commands of cards cooldown.\n`t!help-set` - To see ping role set commands of Shoob, Karuta and Gacha.\n`t!gift <user>` - To gift cards to someone.\n`t!trade <user>` - To send trades to someone.\n`t!profile` - To see your anime soul profile.\n`t!bump` - Link to directly bump on Animesoul site.\n`t!vote` - Vote shoob.\n`t!fuse` - Link to fuse your cards.\n`t!market` - Go directly to the market.\n`t!mg` - Go to minigames.\n`t!auction` - Go to auction site.\n`t!server` - Check out your server directly by going through this link.\n`t!noti` - To see AS Notifications.\n`t!achivement` - check your achivements on as site.\n`t!cal` - Calculator.\n`t!msg` - Check out dms on animesoul site.\n`t!premium <user>` - Gift the user anime soul premium.\n`t!db` - directly go to AS dashboard.\n`t!assupport` - go to the link of  animeosoul  support.\n`t!inv` - check your inventory.\n`t!bank` - directly go to bank.\n`t!av` - To see Avatar.\n`t!timer` - To set countdown.\n`t!reminder` - To set reminder.\n`t!weather` - To see weather details.\n`t!reverse` - To reverse a sentence.\n`t!snipe` - To see the previous deleted massege."
     )
     embed.set_footer(text="Timer Support")
 
     await ctx.send(embed=embed)
 
-@bot.command(aliases= ["hcd", "HELPCD"])
+@bot.command(aliases= ["help-cd"])
 async def helpcd(ctx):
 
     embed = discord.Embed(
         colour=random.randint(0, 0xFFFFFF),
         title="**Cooldown Commands**",
-        description="`t!cd` - To set T1 cooldown reminder.\n`t!cd2` - To set T2 cooldown reminder.\n`t!cd3` - To set T3 cooldown reminder.\n`t!cd4` - To set T4 cooldown reminder.\n`t!cd5` - To set T5 cooldown reminder.\n`t!cd6` - To set T6 cooldown reminder.\n`t!cdbump` - To set 1hr reminder of Bump.\n`t!cdvote` - To set 12hrs reminder of Vote."
-    )
+        description="`t!cd` - To set T1 cooldown reminder.\n`t!cd2` - To set T2 cooldown reminder.\n`t!cd3` - To set T3 cooldown reminder.\n`t!cd4` - To set T4 cooldown reminder.\n`t!cd5` - To set T5 cooldown reminder.\n`t!cd6` - To set T6 cooldown reminder.\n`t!cdbump` - To set 1hr reminder of Bump.\n`t!cdvote` - To set 12hrs reminder of Vote.`t!cd-kdrop` - This command reminds you after 30 minutes for your karuta drop\n`t!cd-gdrop` - This command reminds you after 20 minutes for your gacha drop.\n`t!cd-claim` - This command reminds you after 10 minutes for your karuta / gacha card claim.")
     embed.set_footer(text="Timer Support")
 
     await ctx.send(embed=embed) 
+
+@bot.command(aliases=["help-set"])
+async def helpset(ctx):
+    embed = discord.Embed(
+        colour=random.randint(0, 0xFFFFFF),
+        title="**Set Ping Roles Commands**",
+        description="`t!set-gacha @role` - This command sets the gacha ping role for your server and whenever gachapon spawns cards , the role will be pinged , if not set then spawned cards have a message without the ping.\n\n`t!set-karuta @role` - This command sets the karuta ping role for your server and whenver karuta spawns cards , the role will be pinged , if not set then spawned cards have a message without the ping.\n\n`t!set 1/2/3/4/5/6 @role` - This command will set the ping roles for shoob , as you know , in shoob , the card tiers are pre defined , so , the user needs to provide a tier from 1-6 and the role as well.\n\n`t!remove Shoob/Karuta/Gacha` - This command resets the ping roles for the bot you specify (Shoob/Karuta/Gacha) , make sure that the first letter is capital.\n\n`t!ping-roles-shoob` - This command shows what ping role has been setup for which tier in shoob.\n\n`t!ping-roles-karuta` - This command shows what ping role has been setup for karuta.\n\n`t!ping-roles-gacha` - This command shows what ping role has been setup for gachapon.")
+    embed.set_footer(text="Timer Support")
+
+    await ctx.send(embed=embed)
 
 @bot.command(aliases= ["PING"])
 async def ping(ctx):
@@ -81,7 +90,7 @@ async def about(ctx):
 
     await ctx.send(embed=embed, delete_after=10)
 
-@bot.command(aliases=["cdt1", "cooldown", "cd1", "CD", "CDT1", "COOLDOWN", "CD1", "Cd", "cD"])
+@bot.command(aliases=["cd-t1","cdt1", "cooldown", "cd1", "CD", "CDT1", "COOLDOWN", "CD1", "Cd", "cD"])
 async def cd(ctx):
     embed = discord.Embed(
         colour=discord.Colour.green(),
@@ -94,7 +103,7 @@ async def cd(ctx):
     return
     await ctx.send(embed=embed)
 
-@bot.command(aliases=["cdt2", "cooldownt2", "CD2", "CDT2", "COOLDOWN2"])
+@bot.command(aliases=["cd-t2","cdt2", "cooldownt2", "CD2", "CDT2", "COOLDOWN2"])
 async def cd2(ctx):
     embed = discord.Embed(
         colour=discord.Colour.green(),
@@ -107,7 +116,7 @@ async def cd2(ctx):
     return
     await ctx.send(embed=embed)
 
-@bot.command(aliases=["cdt3", "cooldownt3", "CD3", "CDT3", "COOLDOWN3"])
+@bot.command(aliases=["cd-t3","cdt3", "cooldownt3", "CD3", "CDT3", "COOLDOWN3"])
 async def cd3(ctx):
     embed = discord.Embed(
         colour=discord.Colour.green(),
@@ -120,7 +129,7 @@ async def cd3(ctx):
     return
     await ctx.send(embed=embed)
 
-@bot.command(aliases=["cdt4", "cooldownt4", "CD4", "CDT4", "COOLDOWN4"])
+@bot.command(aliases=["cd-t4","cdt4", "cooldownt4", "CD4", "CDT4", "COOLDOWN4"])
 async def cd4(ctx):
     embed = discord.Embed(
         colour=discord.Colour.green(),
@@ -133,7 +142,7 @@ async def cd4(ctx):
     return
     await ctx.send(embed=embed)
 
-@bot.command(aliases=["cdt5", "cooldownt5", "CD5", "CDT5", "COOLDOWN5"])
+@bot.command(aliases=["cd-t5","cdt5", "cooldownt5", "CD5", "CDT5", "COOLDOWN5"])
 async def cd5(ctx):
     embed = discord.Embed(
         colour=discord.Colour.green(),
@@ -146,7 +155,7 @@ async def cd5(ctx):
     return
     await ctx.send(embed=embed)
 
-@bot.command(aliases=["cdt6", "cooldownt6", "CD6", "CDT6", "COOLDOWN6"])
+@bot.command(aliases=["cd-t6","cdt6", "cooldownt6", "CD6", "CDT6", "COOLDOWN6"])
 async def cd6(ctx):
     embed = discord.Embed(
         colour=discord.Colour.green(),
@@ -156,6 +165,45 @@ async def cd6(ctx):
     seconds=86390
     await asyncio.sleep(seconds)
     await ctx.send(f"Hi {ctx.author.mention}, your `T6 Cooldown` has over.")
+    return
+    await ctx.send(embed=embed)
+
+@bot.command(aliases=["cd-gdrop"])
+async def cdgdrop(ctx):
+    embed = discord.Embed(
+        colour=discord.Colour.green(),
+        description=f"Alright {ctx.author.mention}, I will remind you after 20 mins."
+    )
+    await ctx.send(embed=embed)
+    seconds=1200
+    await asyncio.sleep(seconds)
+    await ctx.send(f"Hi {ctx.author.mention}, you can now use `gg` commands.")
+    return
+    await ctx.send(embed=embed)
+
+@bot.command(aliases=["cd-kdrop"])
+async def cdkdrop(ctx):
+    embed = discord.Embed(
+        colour=discord.Colour.green(),
+        description=f"Alright {ctx.author.mention}, I will remind you after 30 mins."
+    )
+    await ctx.send(embed=embed)
+    seconds=1800
+    await asyncio.sleep(seconds)
+    await ctx.send(f"Hi {ctx.author.mention}, you can now use `kd` commands.")
+    return
+    await ctx.send(embed=embed)
+
+@bot.command(aliases=["cd-claim"])
+async def cdclaim(ctx):
+    embed = discord.Embed(
+        colour=discord.Colour.green(),
+        description=f"Alright {ctx.author.mention}, I will remind you after 10 mins."
+    )
+    await ctx.send(embed=embed)
+    seconds=600
+    await asyncio.sleep(seconds)
+    await ctx.send(f"Hi {ctx.author.mention}, you now can claim cards.")
     return
     await ctx.send(embed=embed)
 
