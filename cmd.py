@@ -62,7 +62,7 @@ async def helpset(ctx):
     embed = discord.Embed(
         colour=random.randint(0, 0xFFFFFF),
         title="**Set Ping Roles Commands**",
-        description="`t!set-gacha @role` - This command sets the gacha ping role for your server and whenever gachapon spawns cards , the role will be pinged , if not set then spawned cards have a message without the ping.\n\n`t!set-karuta @role` - This command sets the karuta ping role for your server and whenver karuta spawns cards , the role will be pinged , if not set then spawned cards have a message without the ping.\n\n`t!set 1/2/3/4/5/6 @role` - This command will set the ping roles for shoob , as you know , in shoob , the card tiers are pre defined , so , the user needs to provide a tier from 1-6 and the role as well.\n\n`t!remove Shoob/Karuta/Gacha` - This command resets the ping roles for the bot you specify (Shoob/Karuta/Gacha) , make sure that the first letter is capital.\n\n`t!ping-roles-shoob` - This command shows what ping role has been setup for which tier in shoob.\n\n`t!ping-roles-karuta` - This command shows what ping role has been setup for karuta.\n\n`t!ping-roles-gacha` - This command shows what ping role has been setup for gachapon.")
+        description="`t!set 3/4/5/6 @role` - This command will set the ping roles for shoob , as you know , in shoob , the card tiers are pre defined , so , the user needs to provide a tier from 3-6 and the role as well.\n\n`t!remove Shoob` - This command resets the ping roles for the bot you specify (Shoob) , make sure that the first letter is capital.\n\n`t!ping-roles-shoob` - This command shows what ping role has been setup for which tier in shoob.")
     embed.set_footer(text="Timer Support")
 
     await ctx.send(embed=embed)
