@@ -40,7 +40,7 @@ async def help(ctx):
     embed = discord.Embed(
         colour=random.randint(0, 0xFFFFFF),
         title="**Help**",
-        description="`t!invite` - Add me to your server.\n`t!about` - About me.\n`t!ping` - To show the Bot's latency.\n`t!help-cd` - To see reminder commands of cards cooldown.\n`t!help-role` - To see ping role set commands of Shoob, Karuta and Gacha.\n`t!gift <user>` - To gift cards to someone.\n`t!trade <user>` - To send trades to someone.\n`t!profile` - To see your anime soul profile.\n`t!bump` - Link to directly bump on Animesoul site.\n`t!vote` - Vote shoob.\n`t!fuse` - Link to fuse your cards.\n`t!market` - Go directly to the market.\n`t!mg` - Go to minigames.\n`t!auction` - Go to auction site.\n`t!server` - Check out your server directly by going through this link.\n`t!noti` - To see AS Notifications.\n`t!achivement` - check your achivements on as site.\n`t!cal` - Calculator.\n`t!msg` - Check out dms on animesoul site.\n`t!premium <user>` - Gift the user anime soul premium.\n`t!db` - directly go to AS dashboard.\n`t!assupport` - go to the link of  animeosoul  support.\n`t!inv` - check your inventory.\n`t!bank` - directly go to bank.\n`t!av` - To see Avatar.\n`t!timer` - To set countdown.\n`t!reminder` - To set reminder.\n`t!weather` - To see weather details.\n`t!reverse` - To reverse a sentence.\n`t!snipe` - To see the previous deleted massege."
+        description="`t!invite` - Add me to your server.\n`t!about` - About me.\n`t!ping` - To show the Bot's latency.\n`t!help-cd` - To see reminder commands of cards cooldown.\n`t!help-role` - To see ping role set commands of Shoob, Karuta and Gacha.\n`t!gift <user>` - To gift cards to someone.\n`t!trade <user>` - To send trades to someone.\n`t!profile` - To see your anime soul profile.\n`t!bump` - Link to directly bump on Animesoul site.\n`t!vote` - Vote shoob.\n`t!fuse` - Link to fuse your cards.\n`t!market` - Go directly to the market.\n`t!mg` - Go to minigames.\n`t!auction` - Go to auction site.\n`t!server` - Check out your server directly by going through this link.\n`t!noti` - To see AS Notifications.\n`t!achivement` - check your achivements on as site.\n`t!math` - Calculator.\n`t!msg` - Check out dms on animesoul site.\n`t!premium <user>` - Gift the user anime soul premium.\n`t!db` - directly go to AS dashboard.\n`t!assupport` - go to the link of  animeosoul  support.\n`t!inv` - check your inventory.\n`t!bank` - directly go to bank.\n`t!av` - To see Avatar.\n`t!timer` - To set countdown.\n`t!reminder` - To set reminder.\n`t!weather` - To see weather details.\n`t!reverse` - To reverse a sentence.\n`t!snipe` - To see the previous deleted massege."
     )
     embed.set_footer(text="Timer Support")
 
@@ -472,16 +472,16 @@ async def on_command_error(ctx, error):
         return
     raise error
 
-@bot.command(aliases=["cal","CAL"])
-async def calculate(ctx, operation, *nums):
-    if operation not in ['+', '-', '*', '/']:
-        embed= discord.Embed(
-            colour=discord.Colour.red(),
-            description=("Please type a valid operation. `Ex: + 25 9`")
-        )
-        await ctx.send(embed=embed)
-    var = f' {operation} '.join(nums)
-    await ctx.send(f'> `Result = {eval(var)}`')
+# @bot.command(aliases=["cal","CAL"])
+# async def calculate(ctx, operation, *nums):
+#     if operation not in ['+', '-', '*', '/']:
+#         embed= discord.Embed(
+#             colour=discord.Colour.red(),
+#             description=("Please type a valid operation. `Ex: + 25 9`")
+#         )
+#         await ctx.send(embed=embed)
+#     var = f' {operation} '.join(nums)
+#     await ctx.send(f'> `Result = {eval(var)}`')
 
 @bot.command()
 async def weather(ctx, message):
