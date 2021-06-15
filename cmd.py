@@ -649,6 +649,15 @@ async def rev(ctx, *, var):
 	await ctx.message.delete()
 	await ctx.send(embed = embed)
 
+@trade.error
+async def rev_error(ctx, error):
+    if isinstance (error, commands.MissingRequiredArgument):
+        embed= discord.Embed(
+            colour=discord.Colour.red(),
+            description=("Please type a sentence to reverse.")
+        )
+        await ctx.send(embed=embed)
+
 snipe_message_content = None
 snipe_message_author = None
 snipe_message_id = None
