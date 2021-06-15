@@ -649,7 +649,7 @@ async def rev(ctx, *, var):
 	await ctx.message.delete()
 	await ctx.send(embed = embed)
 
-@trade.error
+@rev.error
 async def rev_error(ctx, error):
     if isinstance (error, commands.MissingRequiredArgument):
         embed= discord.Embed(
