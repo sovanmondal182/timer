@@ -40,8 +40,7 @@ async def help(ctx):
     embed = discord.Embed(
         colour=random.randint(0, 0xFFFFFF),
         title="**Help**",
-        description="`t!invite` - Add me to your server.\n`t!about` - About me.\n`t!ping` - To show the Bot's latency.\n`t!help-cd` - To see reminder commands of cards cooldown.\n`t!help-role` - To see ping role set commands of Shoob, Karuta and Gacha.\n`t!gift <user>` - To gift cards to someone.\n`t!trade <user>` - To send trades to someone.\n`t!profile` - To see your anime soul profile.\n`t!bump` - Link to directly bump on Animesoul site.\n`t!vote` - Vote shoob.\n`t!fuse` - Link to fuse your cards.\n`t!market` - Go directly to the market.\n`t!mg` - Go to minigames.\n`t!auction` - Go to auction site.\n`t!server` - Check out your server directly by going through this link.\n`t!noti` - To see AS Notifications.\n`t!achivement` - check your achivements on as site.\n`t!math` - Calculator.\n`t!msg` - Check out dms on animesoul site.\n`t!premium <user>` - Gift the user anime soul premium.\n`t!db` - directly go to AS dashboard.\n`t!assupport` - go to the link of  animeosoul  support.\n`t!inv` - check your inventory.\n`t!bank` - directly go to bank.\n`t!av` - To see Avatar.\n`t!timer` - To set countdown.\n`t!reminder` - To set reminder.\n`t!weather` - To see weather details.\n`t!reverse` - To reverse a sentence.\n`t!snipe` - To see the previous deleted massege."
-    )
+        description="`t!invite` - Add me to your server.\n`t!ping` - To show the Bot's latency.\n`t!help-cd` - To see reminder commands of cards cooldown.\n`t!help-role` - To see ping role set commands of Shoob, Karuta and Gachapon.\n`t!shoob` - To see Shoob Bot commands.`t!karuta` - To see Karuta Bot commands.\n`t!av` - To see Avatar.\n`t!math` - Calculator.\n`t!timer` - To set countdown.\n`t!reminder` - To set reminder.\n`t!weather` - To see weather details.\n`t!reverse` - To reverse a sentence.\n`t!snipe` - To see the previous deleted massege.")
     embed.set_footer(text="Timer Support")
 
     await ctx.send(embed=embed)
@@ -52,7 +51,7 @@ async def helpcd(ctx):
     embed = discord.Embed(
         colour=random.randint(0, 0xFFFFFF),
         title="**Cooldown Commands**",
-        description="`t!cd` - To set T1 cooldown reminder.\n`t!cd2` - To set T2 cooldown reminder.\n`t!cd3` - To set T3 cooldown reminder.\n`t!cd4` - To set T4 cooldown reminder.\n`t!cd5` - To set T5 cooldown reminder.\n`t!cd6` - To set T6 cooldown reminder.\n`t!cdbump` - To set 1hr reminder of Bump.\n`t!cdvote` - To set 12hrs reminder of Vote.`t!cd-kdrop` - This command reminds you after 30 minutes for your karuta drop\n`t!cd-gdrop` - This command reminds you after 20 minutes for your gacha drop.\n`t!cd-claim` - This command reminds you after 10 minutes for your karuta / gacha card claim.")
+        description="`t!cd` - To set T1 cooldown reminder.\n`t!cd2` - To set T2 cooldown reminder.\n`t!cd3` - To set T3 cooldown reminder.\n`t!cd4` - To set T4 cooldown reminder.\n`t!cd5` - To set T5 cooldown reminder.\n`t!cd6` - To set T6 cooldown reminder.\n`t!cdbump` - To set 1hr reminder of Bump.\n`t!cdvote` - To set 12hrs reminder of Vote.\n`t!cd-kdrop` - This command reminds you after 30 minutes for your karuta drop\n`t!cd-gdrop` - This command reminds you after 20 minutes for your gacha drop.\n`t!cd-claim` - This command reminds you after 10 minutes for your karuta / gacha card claim.")
     embed.set_footer(text="Timer Support")
 
     await ctx.send(embed=embed) 
@@ -67,6 +66,26 @@ async def helproles(ctx):
 
     await ctx.send(embed=embed)
 
+@bot.command(aliases=["SHOOB", "Shoob"])
+async def shoob(ctx):
+    embed = discord.Embed(
+        colour=random.randint(0, 0xFFFFFF),
+        description=f"`t!shoob-guide` - Displays the Shoob Guide(officially owned by Shoob Owners and Management)\n`t!gift <user>` - To gift cards to someone.\n`t!trade <user>` - To send trades to someone.\n`t!profile` - To see your anime soul profile.\n`t!bump` - Link to directly bump on Animesoul site.\n`t!vote shoob` - Vote shoob.\n`t!fuse` - Link to fuse your cards.\n`t!market` - Go directly to the market.\n`t!mg` - Go to minigames.\n`t!auction` - Go to auction site.\n`t!server` - Check out your server directly by going through this link.\n`t!noti` - To see AS Notifications.\n`t!achivement` - check your achivements on as site.\n`t!msg` - Check out dms on animesoul site.\n`t!premium <user>` - Gift the user anime soul premium.\n`t!db` - directly go to AS dashboard.\n`t!assupport` - go to the link of  animeosoul  support.\n`t!inv` - check your inventory.\n`t!bank` - directly go to bank."
+    )
+    embed.set_footer(text="Timer Support")
+
+    await ctx.send(embed=embed)
+
+@bot.command(aliases=["KARUTA", "Karuta"])
+async def karuta(ctx):
+    embed = discord.Embed(
+        colour=random.randint(0, 0xFFFFFF),
+        description=f"`t!karuta-guide` - Displays the Guide Of Karuta(officially owned by Craig and Karuta Management)\n`t!upgrade` - Know the effort of the card after it will be upgraded.\n`t!vote karuta` - Vote Karuta.\n`t!injured` - Know the effort of your card when it will be healed from its injury.\n`t!dye` - Know the Math behind how Dyes and Frames amplify the effort of your cards."
+    )
+    embed.set_footer(text="Timer Support")
+
+    await ctx.send(embed=embed)
+
 @bot.command(aliases= ["PING"])
 async def ping(ctx):
     if round(bot.latency * 1000) <= 50:
@@ -77,17 +96,6 @@ async def ping(ctx):
         embed=discord.Embed(description=f"**Ping : `{round(bot.latency *1000)} ms`**", color=0xff6600)
     else:
         embed=discord.Embed(description=f"**Ping : `{round(bot.latency *1000)} ms`**", color=0x990000)
-    await ctx.send(embed=embed, delete_after=10)
-@bot.command(aliases= ["ABOUT"])
-async def about(ctx):
-
-    embed = discord.Embed(
-        colour=random.randint(0, 0xFFFFFF),
-        title="**About**",
-        description="This is a Timer Bot. That helps you to claim Shoob cards up to time. So, don't miss any card and enjoy claiming."
-    )
-    embed.set_footer(text="Timer Support")
-
     await ctx.send(embed=embed, delete_after=10)
 
 @bot.command(aliases=["cd-t1","cdt1", "cooldown", "cd1", "CD", "CDT1", "COOLDOWN", "CD1", "Cd", "cD"])
@@ -236,7 +244,7 @@ async def voterem(ctx):
 @bot.command(aliases=["gift", "GIFT"])
 async def gift_cmd(ctx, member : discord.Member):
     embed = discord.Embed(
-        colour=member.top_role.colour,
+        colour=random.randint(0, 0xFFFFFF),
         description=f"[Click Here](https://animesoul.com/gift/{member.id}) to gift cards to <@{member.id}>."
     )
     await ctx.send(embed=embed)
@@ -253,7 +261,7 @@ async def gift_error(ctx, error):
 @bot.command(aliases=["TRADE"])
 async def trade(ctx, member : discord.Member):
     embed = discord.Embed(
-        colour=member.top_role.colour,
+        colour=random.randint(0, 0xFFFFFF),
         title="**Trade**",
         description=f"[Click Here](https://animesoul.com/trade/{member.id}) to send trades to <@{member.id}>."
     )
@@ -272,7 +280,7 @@ async def trade_error(ctx, error):
 @bot.command(name='avatar',aliases=["av", "AV", "AVATAR"])
 async def av_cmd(ctx, member: discord.Member):
     embed = discord.Embed(
-        color = member.top_role.colour,
+        color = random.randint(0, 0xFFFFFF),
         title=f"{member}",
         description=f"[Download]({member.avatar_url})"
     )
@@ -305,7 +313,7 @@ async def si_cmd(ctx):
 @bot.command(name='profile', aliases=['p', 'P', 'PROFILE'])
 async def profile_cmd(ctx, member : discord.Member):
     embed = discord.Embed(
-        colour=member.top_role.colour,
+        colour=random.randint(0, 0xFFFFFF),
         title=f"Profile of {member}",
         description=f"[Click Here](https://animesoul.com/user/{member.id}) to open <@{member.id}>'s AnimeSoul Profile."
     )
@@ -328,14 +336,6 @@ async def bump(ctx):
     embed = discord.Embed(
         colour=random.randint(0, 0xFFFFFF),
         description=f"[Click Here](https://animesoul.com/bump) to Bump."
-    )
-    await ctx.send(embed=embed)
-
-@bot.command(aliases=["VOTE"])
-async def vote(ctx):
-    embed = discord.Embed(
-        colour=random.randint(0, 0xFFFFFF),
-        description=f"[Click Here](https://top.gg/bot/673362753489993749/vote) to Vote."
     )
     await ctx.send(embed=embed)
 
@@ -398,7 +398,7 @@ async def messages(ctx):
 @bot.command(aliases=["PREMIUM"])
 async def premium(ctx, member : discord.Member):
     embed = discord.Embed(
-        colour=member.top_role.colour,
+        colour=random.randint(0, 0xFFFFFF),
         title="**Premium**",
         description=f"[Click Here](https://animesoul.com/premium/gift/{member.id}) to gift AS Premium to <@{member.id}>."
     )
@@ -471,17 +471,6 @@ async def on_command_error(ctx, error):
     if isinstance(error, CommandNotFound):
         return
     raise error
-
-# @bot.command(aliases=["cal","CAL"])
-# async def calculate(ctx, operation, *nums):
-#     if operation not in ['+', '-', '*', '/']:
-#         embed= discord.Embed(
-#             colour=discord.Colour.red(),
-#             description=("Please type a valid operation. `Ex: + 25 9`")
-#         )
-#         await ctx.send(embed=embed)
-#     var = f' {operation} '.join(nums)
-#     await ctx.send(f'> `Result = {eval(var)}`')
 
 @bot.command()
 async def weather(ctx, message):
