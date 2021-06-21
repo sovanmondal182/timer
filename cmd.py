@@ -40,7 +40,7 @@ async def help(ctx):
     embed = discord.Embed(
         colour=random.randint(0, 0xFFFFFF),
         title="**Help**",
-        description="`t!invite` - Add me to your server.\n`t!ping` - To show the Bot's latency.\n`t!help-cd` - To see reminder commands of cards cooldown.\n`t!help-role` - To see ping role set commands of Shoob, Karuta and Gachapon.\n`t!shoob` - To see Shoob Bot commands.\n`t!karuta` - To see Karuta Bot commands.\n`t!av` - To see Avatar.\n`t!math` - Calculator.\n`t!timer` - To set countdown.\n`t!reminder` - To set reminder.\n`t!weather` - To see weather details.\n`t!reverse` - To reverse a sentence.\n`t!snipe` - To see the previous deleted massege.")
+        description="`t!invite` - Add me to your server.\n`t!ping` - To show the Bot's latency.\n`t!help-cd` - To see reminder commands of cards cooldown.\n`t!help-role` - To see ping role set commands of Shoob, Karuta and Gachapon.\n`t!shoob` - To see Shoob Bot commands.\n`t!karuta` - To see Karuta Bot commands.\n`t!av` - To see Avatar.\n`t!math` - Calculator.\n`t!timer` - To set countdown.\n`t!reminder` - To set reminder.\n`t!weather` - To see weather details.\n`t!reverse` - To reverse a sentence.\n`t!snipe` - To see the previous deleted massege.\n`t!fillers` - Displays the fillers episodes of the anime which you specify ( taken from https://animefillerlist.com/shows/ ).")
     embed.set_footer(text="Timer Support")
 
     await ctx.send(embed=embed)
