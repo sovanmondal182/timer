@@ -17,9 +17,24 @@ bot.remove_command('help')
 
 @bot.event
 async def on_ready():
-    activity = discord.Game(name="t!help", type=3)
+    #activity = discord.Game(name="t!help", type=3)
     print("Bot is ready!")
-    await bot.change_presence(status=discord.Status.online, activity=activity)
+    #await bot.change_presence(status=discord.Status.online, activity=activity)
+
+async def ch_pr():
+	await bot.wait_until_ready()
+	servers = len(bot.guilds)
+	members = 0
+	for guild in bot.guilds:
+    		members += guild.member_count - 1
+	statuses = ["t!help", f'Serving {members} users in {servers} guilds']
+
+	while not bot.is_closed():
+		status = random.choice(statuses)
+		await bot.change_presence(activity=discord.Game(name=status))
+		await asyncio.sleep(10)
+
+bot.loop.create_task(ch_pr())
 
 @bot.command(aliases= ["INVITE"])
 async def invite(ctx):
