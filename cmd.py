@@ -17,9 +17,7 @@ bot.remove_command('help')
 
 @bot.event
 async def on_ready():
-    #activity = discord.Game(name="t!help", type=3)
     print("Bot is ready!")
-    #await bot.change_presence(status=discord.Status.online, activity=activity)
 
 async def ch_pr():
 	await bot.wait_until_ready()
