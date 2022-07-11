@@ -8,7 +8,7 @@ LOGGING_FORMAT: str = '[%(asctime)-15s] [%(levelname)s] [%(filename)s:%(lineno)d
 SHOOB_ID: int = 673362753489993749
 TIMEOUT: int = 15
 WAIT_DIFF: int = 1
-BOT_TOKEN: str = "NzkzNDMyMzMwOTE1MjgyOTg0.X-sLcA.Bw7yWlNiXsORCcRixjApNCMIfek"
+BOT_TOKEN: str = "TOKEN"
 log: logging.Logger = logging.getLogger('discord')
 logging.basicConfig(level=20, format=LOGGING_FORMAT, datefmt='%m/%d | %I:%M:%S')
 intents: discord.Intents = discord.Intents().none()
@@ -63,11 +63,6 @@ async def on_message(message: discord.Message) -> None:
             {wait_task, count_task},
             return_when=asyncio.FIRST_COMPLETED
         )
-    # embed1= discord.Embed(
-    # colour=discord.Colour.green(),
-    # description=(f":white_check_mark: - **Card Claimed!**")
-    # )
-    # await out.edit(embed=embed1, delete_after=5)
     await out.delete()
     for task in pending:
         task.cancel()
