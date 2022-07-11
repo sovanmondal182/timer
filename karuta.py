@@ -40,4 +40,4 @@ async def on_command_error(ctx, error):
         return
     raise error  
   
-bot.run("NzkzNDMyMzMwOTE1MjgyOTg0.X-sLcA.Bw7yWlNiXsORCcRixjApNCMIfek")
+bot.run("TOKEN")
