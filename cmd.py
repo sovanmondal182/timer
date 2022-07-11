@@ -9,7 +9,7 @@ import os
 import json
 from discord.ext.commands import CommandNotFound
 
-TOKEN = "NzkzNDMyMzMwOTE1MjgyOTg0.X-sLcA.Bw7yWlNiXsORCcRixjApNCMIfek"
+TOKEN = "TOKEN"
 BOT_PREFIX = "t!", "T!", ","
 
 bot = commands.Bot(command_prefix=BOT_PREFIX)
